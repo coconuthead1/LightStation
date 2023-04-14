@@ -31,8 +31,16 @@ void setup() {
 void loop() {
 int RedValue = analogRead(A0);
 int RedValue2 = analogRead(A1);
-int GreenValue = analogRead(A2);
-int GreenValue2 = analogRead(A3);
+int RedValue3 = analogRead(A3);
+
+int GreenValue = analogRead(A3);
+int GreenValue2 = analogRead(A4);
+int GreenValue3 = analogRead(A5);
+
+int BlueValue = analogRead(A6);
+int BlueValue2 = analogRead(A7);
+int BlueValue3 = analogRead(A8);
+
 Serial.print(RedValue);
 Serial.print("   ");
 Serial.print(RedValue2);
@@ -44,10 +52,16 @@ Serial.println(GreenValue2);
 
   int brightnessR1 = map(analogRead(A0), 0,650,0,255);
   int brightnessR2 = map(analogRead(A1), 0,650,0,255);
-  int brightnessG1 = map(analogRead(A2), 0,650,0,255);
+  int brightnessR3 = map(analogRead(A2), 0,650,0,255);
+
+  int brightnessG1 = map(analogRead(A3), 0,650,0,255);
   int brightnessG2 = map(analogRead(A4), 0,650,0,255);
-  int brightnessB1 = map(analogRead(A5), 0,650,0,255);
-  int brightnessB2 = map(analogRead(A6), 0,650,0,255);
+  int brightnessG3 = map(analogRead(A5), 0,650,0,255);
+  
+
+  int brightnessB1 = map(analogRead(A6), 0,650,0,255);
+  int brightnessB2 = map(analogRead(A7), 0,650,0,255);
+  int brightnessB3 = map(analogRead(A8), 0,650,0,255);
 
  
   for (int i = 0; i < NUM_LEDS; i = i + 1)
@@ -56,7 +70,7 @@ Serial.println(GreenValue2);
 
  
 
-    leds[i] = CRGB(brightnessR1 + brightnessR2 + 0 ,brightnessG1 + brightnessG2 + 0, brightnessB1 + brightnessB2 + 0);
+    leds[i] = CRGB(brightnessR1 + brightnessR2 + brightnessR3 ,brightnessG1 + brightnessG2 + brightnessG3, brightnessB1 + brightnessB2 + brightnessB3);
 
   }
 
