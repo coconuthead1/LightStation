@@ -34,26 +34,27 @@ int RedValue = analogRead(A0);
 int GreenValue = analogRead(A2);
 int BlueValue = analogRead(A4);
 Serial.print(RedValue);
-Serial.print("   ");
+Serial.print(",");
 Serial.print(GreenValue);
-Serial.print("   ");
+Serial.print(",");
 Serial.println(BlueValue);
 
 
-  int brightnessR = map(analogRead(A0), 0,650,0,255);
-  int brightnessG = map(analogRead(A2), 0,650,0,255);
-  int brightnessB = map(analogRead(A4), 0,650,0,255);
+  int brightnessR = constrain(map(RedValue, 350,450,0,255),0,255);
+  int brightnessG = constrain(map(GreenValue, 350,450,0,255),0,255);
+  int brightnessB = constrain(map(BlueValue, 350,450,0,255),0,255);
 
   for (int i = 0; i < NUM_LEDS; i = i + 1)
 
   {
 
-    leds[i] = CRGB(brightnessR,brightnessG,brightnessB);
+    leds[i] = CRGB(brightnessR, brightnessG, brightnessB);
 
   }
 
   FastLED.show();
 
-
+delay(100);
 
 }
+ 
